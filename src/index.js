@@ -256,9 +256,13 @@ export default class extends Component {
       ? height * props.index
       : width * props.index
 
+    if (state.total === initState.total && !props.updateIndex) {
+      initState.offset = this.internals.offset;
+    }
 
     this.internals = {
       ...this.internals,
+      offset: { ...initState.offset },
       isScrolling: false
     };
     return initState
